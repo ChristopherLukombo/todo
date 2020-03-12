@@ -5,11 +5,13 @@ public class Item {
 	private Long id;
 	private final String note;
 	private final String amountOfTime;
+	private final String status;
 
-	public Item(final Long id, final String note, final String amountOfTime) {
+	public Item(final Long id, final String note, final String amountOfTime, final String status) {
 		this.id = id;
 		this.note = note;
 		this.amountOfTime = amountOfTime;
+		this.status = status;
 	}
 
 	public Long getId() {
@@ -26,6 +28,10 @@ public class Item {
 
 	public String getAmountOfTime() {
 		return amountOfTime;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 
 }

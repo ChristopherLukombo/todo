@@ -17,7 +17,7 @@ public class TodoManagerImplTest {
 
 	@Before
 	public void setUp() {
-		item = new Item(1L, "toto", "dedhfe");
+		item = new Item(1L, "toto", "dedhfe", "done");
 	}
 
 	@Test
@@ -28,6 +28,16 @@ public class TodoManagerImplTest {
 
 		// Then
 		Assert.assertTrue(!todoManager.findAll().isEmpty());
+	}
+	
+	@Test
+	public void shouldFindItemById() {
+		// Given
+		final ItemRepository itemRepository = new FakeItemRepository();
+		final TodoManager todoManager = new TodoManagerImpl(itemRepository);
+
+		// Then
+		Assert.assertTrue(todoManager.findItem(1L) != null);
 	}
 	
 
