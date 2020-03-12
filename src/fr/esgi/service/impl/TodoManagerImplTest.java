@@ -40,6 +40,20 @@ public class TodoManagerImplTest {
 		Assert.assertTrue(todoManager.findItem(1L) != null);
 	}
 	
+	@Test
+	public void shouldAddItem() {
+		// Given
+		final ItemRepository itemRepository = new FakeItemRepository();
+		final TodoManager todoManager = new TodoManagerImpl(itemRepository);
+		final Item item = new Item(1L, "toto", "dedhfe", "done");
+		
+		todoManager.add(item);
+		
+		// Then
+		Assert.assertTrue(todoManager.findAll().size() == 2);
+		
+	}
+	
 
 	class FakeItemRepository implements ItemRepository {
 
