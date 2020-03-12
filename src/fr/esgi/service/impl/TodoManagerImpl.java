@@ -33,5 +33,13 @@ public class TodoManagerImpl implements TodoManager {
 	public List<Item> findAll() {
 		return itemRepository.getItems();
 	}
+
+	@Override
+	public Item findItem(final Long id) {
+		return itemRepository.getItems().stream()
+				.filter(item -> item.getId().equals(id))
+				.findFirst()
+				.orElseGet(()-> null);
+	}
 	
 }

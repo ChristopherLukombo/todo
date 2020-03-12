@@ -9,5 +9,7 @@ public interface TodoManager {
 	
 	boolean delete(Long id);
 	
+	Item findItem(Long id);
+	
 	void add(Item item);
 }

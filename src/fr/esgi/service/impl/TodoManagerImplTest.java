@@ -1,6 +1,7 @@
 package fr.esgi.service.impl;
 
-import java.util.Arrays;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -10,7 +11,6 @@ import fr.esgi.domain.Item;
 import fr.esgi.repository.ItemRepository;
 import fr.esgi.service.TodoManager;
 import junit.framework.Assert;
-
 public class TodoManagerImplTest {
 
 	private Item item;
@@ -24,16 +24,18 @@ public class TodoManagerImplTest {
 	public void shouldGetAllWhenContainsElements() {
 		// Given
 		final ItemRepository itemRepository = new FakeItemRepository();
-
 		final TodoManager todoManager = new TodoManagerImpl(itemRepository);
 
 		// Then
 		Assert.assertTrue(!todoManager.findAll().isEmpty());
 	}
+	
 
 	class FakeItemRepository implements ItemRepository {
 
-		private final List<Item> items = Arrays.asList(item);
+		final List<Item> items = new ArrayList<Item>() {{
+		    add(item);
+		}};
 
 		@Override
 		public List<Item> getItems() {
